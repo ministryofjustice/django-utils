@@ -15,7 +15,7 @@ setup(
     license='BSD License',
     description='Template helpers for working with django templates',
     long_description=README,
-    install_requires=['Django>=1.8'],
+    install_requires=['Django>=1.8,<1.9'],
     classifiers=[
         'Framework :: Django',
         'Intended Audience :: MOJ Developers',
