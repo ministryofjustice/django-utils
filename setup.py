@@ -9,15 +9,16 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-utils',
-    version='0.1',
+    version='0.2',
     packages=['moj_utils', 'moj_utils.templatetags'],
     include_package_data=True,
     license='BSD License',
-    description='Template helpers for working with django templates',
+    description='A set of utilities for MoJ Django-based services',
     long_description=README,
     install_requires=['Django>=1.8,<1.9'],
     classifiers=[
         'Framework :: Django',
         'Intended Audience :: MOJ Developers',
+        'Programming Language :: Python :: 3.4',
     ]
 )

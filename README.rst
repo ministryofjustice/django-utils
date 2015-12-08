@@ -1,7 +1,11 @@
 Django Utils
 ============
 
-A set of helpers to work with Django templates.
+A set of utilities for MoJ Django-based services:
+
+* ping.json view for IRaT support
+* template context processors for common variables
+* template tags for form field and value processing
 
 Installation
 ------------
