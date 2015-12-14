@@ -5,7 +5,7 @@ A set of utilities for MoJ Django-based services:
 
 * ping.json view for IRaT support
 * template context processors for common variables
-* template tags for form field and value processing
+* template tags for form field and value processing and adding Sentry JS exception handling
 
 Installation
 ------------
