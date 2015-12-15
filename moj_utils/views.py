@@ -38,3 +38,24 @@ class PingJsonView(View):
         if not response_data['build_date'] or not response_data['commit_id']:
             response.status_code = 501
         return response
+
+
+class HealthcheckView(View):
+    """
+    View for returning the health status of dependency services for IRaT support
+    """
+    def get(self, request):
+        from moj_utils.healthchecks import registry
+
+        response_data = {}
+        for response in registry.run_healthchecks():
+            response = response.get_dict()
+            check_name = response.pop('name')
+            response_data[check_name] = response
+        all_passed = all(response['status'] for response in response_data.values())
+        response_data['*'] = dict(status=all_passed)
+
+        response = JsonResponse(response_data)
+        if not all_passed:
+            response.status_code = 500
+        return response
