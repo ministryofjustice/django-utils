@@ -19,7 +19,10 @@ DEFAULT_SETTINGS = dict(
         'DIRS': [],
         'APP_DIRS': False,
         'OPTIONS': {
-            'context_processors': [],
+            'context_processors': [
+                'moj_utils.context_processors.analytics',
+                'moj_utils.context_processors.app_environment',
+            ],
             'loaders': ['moj_utils.tests.utils.DummyTemplateLoader']
         },
     }],
