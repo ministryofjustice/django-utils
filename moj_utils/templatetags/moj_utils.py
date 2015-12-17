@@ -26,7 +26,7 @@ def field_from_name(form, name):
 @register.inclusion_tag('moj_utils/sentry-js.html')
 def sentry_js():
     sentry_dsn = None
-    if sentry_client:
+    if sentry_client is not None:
         sentry_dsn = sentry_client.get_public_dsn('https') or None
     return {
         'sentry_dsn': sentry_dsn
