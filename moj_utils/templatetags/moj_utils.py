@@ -1,4 +1,8 @@
 from django import template
+try:
+    from raven.contrib.django.models import client as sentry_client
+except ImportError:
+    sentry_client = None
 
 register = template.Library()
 
@@ -21,12 +25,9 @@ def field_from_name(form, name):
 
 @register.inclusion_tag('moj_utils/sentry-js.html')
 def sentry_js():
-    try:
-        from raven.contrib.django.models import client
-    except ImportError:
-        return None
-
-    sentry_dsn = client.get_public_dsn('https') or None
+    sentry_dsn = None
+    if sentry_client:
+        sentry_dsn = sentry_client.get_public_dsn('https') or None
     return {
         'sentry_dsn': sentry_dsn
     }
