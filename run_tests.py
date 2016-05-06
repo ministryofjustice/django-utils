@@ -10,7 +10,7 @@ from django.test.runner import DiscoverRunner
 DEFAULT_SETTINGS = dict(
     DEBUG=True,
     SECRET_KEY='a' * 24,
-    ROOT_URLCONF='moj_utils.tests.urls',
+    ROOT_URLCONF='tests.urls',
     INSTALLED_APPS=(
         'moj_utils',
     ),
@@ -23,19 +23,19 @@ DEFAULT_SETTINGS = dict(
                 'moj_utils.context_processors.analytics',
                 'moj_utils.context_processors.app_environment',
             ],
-            'loaders': ['moj_utils.tests.utils.DummyTemplateLoader']
+            'loaders': ['tests.utils.DummyTemplateLoader']
         },
     }],
 )
 
 
-def runtests():
+def run_tests():
     if 'setup.py' in sys.argv:
-        # allows `python setup.py test` as well as `./runtests.py`
-        sys.argv = ['runtests.py']
+        # allows `python setup.py test` as well as `./run_tests.py`
+        sys.argv = ['run_tests.py']
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('test_labels', nargs='*', default=['moj_utils.tests'])
+    parser.add_argument('test_labels', nargs='*', default=['tests'])
     parser.add_argument('--verbosity', type=int, choices=list(range(4)), default=1)
     parser.add_argument('--noinput', dest='interactive',
                         action='store_false', default=True)
@@ -56,4 +56,4 @@ def runtests():
 
 
 if __name__ == '__main__':
-    runtests()
+    run_tests()
