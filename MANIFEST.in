@@ -1,3 +1,3 @@
 include LICENSE
 include README.rst
-recursive-include moj_utils/templates *
+recursive-include moj_utils/templates *.html
